@@ -85,7 +85,7 @@ class AccountViewSet(viewsets.ViewSet):
     @action(methods = ['POST'], detail = False)
     def signup(self, request):
         serializer = SignupSerializer(data=request.data)
-        if not serializer.is_valid():
+        if not serializer.is_valid(raise_exception=True):
             return   Response({
                     'success' : False,
                     'message' : 'input is not valid.'
